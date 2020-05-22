@@ -19,7 +19,7 @@ model_path = './model/model.hdf5'
 model =  tf.keras.models.load_model(model_path)
 
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = set(['png', 'jpeg', 'jpg', 'png', 'gif', 'tiff', 'psd', 'pdf', 'eps', 'ai', 'indd', 'raw'])
+ALLOWED_EXTENSIONS = set(['png', 'jpeg', 'jpg', 'png'])
 
 def get_as_base64(url):
     return base64.b64encode(request.get(url).content)
