@@ -26,6 +26,7 @@ imageio==2.8.0
 imbalanced-learn==0.6.2
 imblearn==0.0
 imgaug==0.4.0
+imutils==0.5.3
 isort==4.3.21
 itsdangerous==1.1.0
 Jinja2==2.11.2
@@ -48,9 +49,6 @@ opencv-python==4.2.0.34
 opt-einsum==3.2.1
 pandas==1.0.3
 Pillow==7.1.2
-plaidbench==0.7.0
-plaidml==0.7.0
-plaidml-keras==0.7.0
 playsound==1.2.2
 protobuf==3.11.3
 pyasn1==0.4.8
