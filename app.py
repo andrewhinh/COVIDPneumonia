@@ -1,8 +1,5 @@
 #Usage: python app.py
-#Usage: python app.py
-#Works for tf 2.2.0
 import os
- 
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array
@@ -14,22 +11,32 @@ import cv2
 import time
 import uuid
 import base64
-import tensorflow as tf 
+import tensorflow.compat.v1 as tf
+from keras import backend as K
+import keras
+import sys
+import matplotlib
+matplotlib.use("TkAgg")
+import matplotlib.pyplot as plt
+from PIL import Image
 
 img_width, img_height = 28, 28
 model_path = './model/model.hdf5'
 model =  tf.keras.models.load_model(model_path)
 
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = set(['png', 'jpeg', 'jpg', 'png'])
+ALLOWED_EXTENSIONS = set(['png', 'jpeg', 'jpg', 'pdf'])
 
 def get_as_base64(url):
     return base64.b64encode(request.get(url).content)
 
 def predict(file):
+    import tensorflow.compat.v1 as tf
+    tf.enable_v2_behavior()
     x = load_img(file, target_size=(img_width,img_height))
     x = img_to_array(x).astype('float16')/255
     x = np.expand_dims(x, axis=0)
+    model._make_predict_function()
     array = model.predict(x)
     result = array[0]
     answer = np.argmax(result)
@@ -41,6 +48,8 @@ def predict(file):
 	    print("Label: Normal")
     elif answer == 3:
 	    print("Label: Viral Pneumonia")
+    from s import makeheatmap
+    makeheatmap(file)
     return answer
 
 def my_random_string(string_length=10):
@@ -59,7 +68,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def template_test():
-    return render_template('template.html', label='', imagesource='../uploads/download.jpg')
+    return render_template('template.html', label='', imagesource='../uploads/COVID-19_5.png')
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -88,7 +97,8 @@ def upload_file():
 
             os.rename(file_path, os.path.join(app.config['UPLOAD_FOLDER'], filename))
             print("--- %s seconds ---" % str (time.time() - start_time))
-            return render_template('template.html', label=label, imagesource='../uploads/' + filename)
+
+            return render_template('template.html', label=label, imagesource='./' + file_path[:-3] + 'new.png')
 
 from flask import send_from_directory
 
