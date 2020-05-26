@@ -16,7 +16,7 @@ from keras import backend as K
 import keras
 import sys
 import matplotlib
-matplotlib.use("agg")
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from PIL import Image
 
