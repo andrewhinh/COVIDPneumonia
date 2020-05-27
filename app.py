@@ -1,8 +1,7 @@
-#Usage: python app.py
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array
+from keras.preprocessing.image import load_img, img_to_array
 from keras.models import Sequential
 import numpy as np
 import argparse
@@ -22,7 +21,8 @@ from PIL import Image
 
 img_width, img_height = 28, 28
 model_path = './model/model.hdf5'
-model =  tf.keras.models.load_model(model_path)
+from tensorflow.python.keras.saving.save import load_model
+model = load_model(model_path)
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpeg', 'jpg', 'pdf'])
@@ -68,7 +68,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def template_test():
-    return render_template('template.html', label='', imagesource='../uploads/download.jpg')
+    return render_template('template.html', label='', imagesource='../uploads/COVID-19_5.png')
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
