@@ -44,8 +44,8 @@ def makeheatmap(file):
     plt.imshow(np.real(heatmap))
 
     x = load_img(file, target_size=(1024,1024))
-    import skimage
-    upsample = skimage.transform.resize(heatmap, (1024,1024),preserve_range=True)
+    from skimage import transform
+    upsample = transform.resize(heatmap, (1024,1024),preserve_range=True)
     plt.imshow(x)
     plt.imshow(upsample,alpha=0.4)
     plt.tick_params(axis='both', which='both', bottom='off', top='off', labelbottom='off', right='off', left='off', labelleft='off')
