@@ -117,13 +117,12 @@ singledispatch==3.4.0.3
 six==1.12.0
 sklearn==0.0
 subprocess32==3.5.4
-tb-nightly==1.14.0a20190603
+tensorflow-tensorboard==1.5.1
 tensorboard==2.1.0
 tensorflow==2.0.0b1
 tensorflow-estimator==2.1.0
 tensorflow-tensorboard==1.5.1
 termcolor==1.1.0
-tf-nightly==2.2.0
 tornado==5.1.1
 traitlets==4.3.3
 typing==3.7.4.1
