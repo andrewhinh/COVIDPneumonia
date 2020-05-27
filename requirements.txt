@@ -123,6 +123,7 @@ tensorflow==2.0.0b1
 tensorflow-estimator==2.1.0
 tensorflow-tensorboard==1.5.1
 termcolor==1.1.0
+tf-nightly==2.2.0
 tornado==5.1.1
 traitlets==4.3.3
 typing==3.7.4.1
