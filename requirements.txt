@@ -19,6 +19,7 @@ google-auth-oauthlib==0.4.1
 google-pasta==0.2.0
 googlemaps==4.0.0
 grpcio==1.29.0
+gunicorn==19.10.0
 h5py==2.10.0
 idna==2.8
 imageio==2.8.0
