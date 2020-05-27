@@ -48,7 +48,8 @@ def makeheatmap(file):
     upsample = transform.resize(heatmap, (1024,1024),preserve_range=True)
     plt.imshow(x)
     plt.imshow(upsample,alpha=0.4)
-    plt.tick_params(axis='both', which='both', bottom='off', top='off', labelbottom='off', right='off', left='off', labelleft='off', length=0)
+    plt.tick_params(axis='both', which='both', bottom='off', top='off', labelbottom='off', right='off', left='off', labelleft='off', length=0)     
+    plt.axis('off')
 
     plt.savefig('./uploads/' + file[8:-3] + 'new.png', bbox_inches='tight', pad_inches = 0)
     os.environ['TF2_BEHAVIOR'] = '1'
