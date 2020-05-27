@@ -10,10 +10,13 @@ def makeheatmap(file):
     from PIL import Image
     img_width, img_height = 28, 28
     model_path = './model/model.hdf5'
-    model =  tf.keras.models.load_model(model_path)
+    from tensorflow.python.keras.saving.save import load_model
+    model = load_model(model_path)
 
-    session = tf.compat.v1.keras.backend.get_session()
-    init = tf.compat.v1.global_variables_initializer()
+    from tensorflow.python.keras.backend import get_session
+
+    session = get_session()
+    init = tf.global_variables_initializer()
     session.run(init)
 
     x = load_img(file, target_size=(img_width,img_height))
@@ -49,4 +52,3 @@ def makeheatmap(file):
 
     plt.savefig('./uploads/' + file[8:-3] + 'new.png', bbox_inches='tight', pad_inches = 0)
     os.environ['TF2_BEHAVIOR'] = '1'
-    
