@@ -31,7 +31,7 @@ def get_as_base64(url):
     return base64.b64encode(request.get(url).content)
 
 def predict(file):
-    #import tensorflow.compat.v1 as tf
+    import tensorflow.compat.v1 as tf
     tf.enable_v2_behavior()
     x = load_img(file, target_size=(img_width,img_height))
     x = img_to_array(x).astype('float16')/255
