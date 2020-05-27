@@ -128,8 +128,6 @@ traitlets==4.3.3
 typing==3.7.4.1
 urllib3==1.25.8
 utils==0.9.0
-vboxapi==1.0
-virtualenv==20.0.18
 vis==0.0.5
 wcwidth==0.1.9
 webencodings==0.5.1
